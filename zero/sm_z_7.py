@@ -38,8 +38,8 @@ f.write("\n")
 f.write("TRAINING: \n\n")
 f.flush
 
-use_GUI = True
-use_cuda = False
+use_GUI = False
+use_cuda = True
 
 if use_GUI:
     from matplotlib import pyplot as plt

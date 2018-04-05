@@ -38,8 +38,8 @@ f.write("\n")
 f.write("TRAINING: \n\n")
 f.flush()
 
-use_GUI = True
-use_cuda = False # torch.cuda.is_available()
+use_GUI = False
+use_cuda = True # torch.cuda.is_available()
 
 if use_GUI:
     from matplotlib import pyplot as plt
@@ -234,8 +234,8 @@ class StepperEnv:
 
         self.DeltaNet = DeltaModel()
         self.DeltaNet.load_state_dict(torch.load("neural_net.out"))
-        self.optim = (self.get_optim_delta(speed_level, load_torque) * (self.delta_max - self.delta_min)) \
-                     + self.delta_min
+        self.optim = 81.0  #(self.get_optim_delta(speed_level, load_torque) * (self.delta_max - self.delta_min)) \
+                     #+ self.delta_min
 
     # @staticmethod
     def get_norm(self, minm, maxm, val):
@@ -248,7 +248,7 @@ class StepperEnv:
         load_norm = self.get_norm(self.load_torque_min, self.load_torque_max, load_lv)
         speed_norm = self.get_norm(self.speed_min, self.speed_max, speed_lv)
         net_input = Variable(torch.FloatTensor([speed_norm, load_norm]))
-        return float(self.DeltaNet(net_input)[0])
+        return 81.0/180.0 #float(self.DeltaNet(net_input)[0])
 
     def step(self):
         x = np.arange(self.t, self.t + self.time_step, self.time_step / 1.000000000001)

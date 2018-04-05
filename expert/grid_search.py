@@ -8,7 +8,7 @@ exp_replay = [20000]
 eps_decay = [100000, 500000]
 lr = [0.001, 0.01]
 neurons = [64, 128]
-episodes = 1000 #TODO aanpassen naar een hoger aantal
+episodes = 1000  #TODO aanpassen naar een hoger aantal
 
 # two action spaces to be tested
 scripts = ["sm_5.py", "sm_7.py"]
